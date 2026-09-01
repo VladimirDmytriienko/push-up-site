@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Push Up Streak — site
 
-## Getting Started
+The website for [Push Up Streak](https://github.com/VladimirDmytriienko/push-up), an iOS app
+that counts push-ups with the iPhone's TrueDepth camera while the phone lies on the floor
+beneath you.
 
-First, run the development server:
+Three pages. Two of them exist because the App Store will not accept a submission without
+them, and one exists because the app deserves a page.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+| Route | Why |
+| --- | --- |
+| `/` | Landing page: what it is, the three steps, the screens |
+| `/privacy` | Required — the Privacy Policy URL in App Store Connect |
+| `/support` | Required — the Support URL |
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## The thinking behind how it looks
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**It borrows the app's own materials rather than inventing a second brand for the web.**
+Colours come from the app's `tokens.ts`, not from sampling screenshots, so the two cannot
+drift apart by a shade. The display face is `HelveticaNeue-CondensedBlack` and the mono is
+`Menlo` — both ship with macOS and iOS, which is nearly everyone who will read this, so
+most visitors get the product's actual type with no web font to download at all. `Anton`
+is the fallback for the rest.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**One theme, deliberately.** The app follows the system because you use it at six in the
+morning on a floor. A page you read once does not have that problem, and a single dark
+ground lets the screenshots — which are bright objects — be the only light on it.
 
-## Learn More
+**No tracking.** No analytics, no cookies, no third-party scripts. The privacy page claims
+the app collects nothing; a site that watched you while saying so would be an odd way to
+make the point.
 
-To learn more about Next.js, take a look at the following resources:
+## Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Next 16 (App Router), React 19, Tailwind 4, TypeScript. Every route prerenders static, so
+there is no server to keep running and nothing to go stale. Deployed on Vercel.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes for the curious
 
-## Deploy on Vercel
+The screenshots in `public/shots` come from a Release build on the Simulator with a seeded
+workout history — the app has not shipped, so no real history is long enough to photograph
+yet. A Release build specifically, because a development build draws a floating dev-menu
+button over the screen.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site's own URL is never hardcoded. `SITE_URL` in `src/lib/site.ts` reads Vercel's
+`VERCEL_PROJECT_PRODUCTION_URL`, so metadata, `robots.txt` and `sitemap.xml` are correct on
+the free domain today and stay correct the day a custom one is pointed at it, with nothing
+to remember to change.

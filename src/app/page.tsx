@@ -1,69 +1,104 @@
-import Image from "next/image";
+import Link from "next/link";
+
+import { Rise } from "@/components/rise";
+import { Screens } from "@/components/screens";
+import { StoreNote } from "@/components/store-note";
+import { APP_NAME } from "@/lib/site";
+
+/**
+ * The steps, word for word from the app's own guide.
+ *
+ * Rewriting them for the web would only let the site and the product start disagreeing
+ * about how the thing works — and these three lines have already been tested on a screen.
+ */
+const STEPS = [
+  ["Put phone on the floor", "Screen up."],
+  ["Chin over the camera", "Line yourself up."],
+  ["Push", "Reps count themselves."],
+] as const;
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main className="flex-1 pb-24">
+      {/*
+        One screen at a time, beside the headline.
+
+        The order differs by width on purpose. On a phone the headline lands first, then the
+        screen, then the prose — you scroll, so the claim should arrive before its evidence.
+        On a wide display both are in view at once, and the screen reads better on the left
+        where the eye starts.
+      */}
+      <section className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 pt-16 sm:pt-24 md:grid md:grid-cols-[minmax(0,320px)_1fr] md:items-center md:gap-16">
+        <div className="md:col-start-2 md:row-start-1">
+          <p className="mono text-fg-tertiary">{APP_NAME}</p>
+          <h1 className="display mt-6 text-[clamp(2.75rem,7vw,5rem)] uppercase">
+            <Rise text="Put the phone down and push" delay={0.15} />
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+        </div>
+
+        <div className="md:col-start-1 md:row-span-2 md:row-start-1">
+          <Screens />
+        </div>
+
+        <div className="md:col-start-2 md:row-start-2">
+          <p className="max-w-[46ch] text-xl leading-relaxed text-fg-secondary">
+            The TrueDepth camera watches your chest and counts every rep. No wearable, no
+            tapping the screen between sets, no account. Everything happens on the iPhone
+            and nothing leaves it.
           </p>
+          <div className="mt-9 max-w-[26rem]">
+            <StoreNote />
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </section>
+
+      <section className="mx-auto mt-24 w-full max-w-5xl border-t border-rule px-6 pt-14">
+        <h2 className="mono text-fg-tertiary">How it works</h2>
+        <ol className="mt-10 grid list-none gap-10 p-0 sm:grid-cols-3">
+          {STEPS.map(([title, detail], i) => (
+            <li key={title} className="flex gap-5">
+              <span className="mono pt-1 tabular-nums text-fg-tertiary">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span>
+                <span className="mono block text-[13px] text-fg">{title}</span>
+                <span className="mt-2 block text-fg-secondary">{detail}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="mx-auto mt-24 w-full max-w-5xl border-t border-rule px-6 pt-14">
+        <h2 className="mono text-fg-tertiary">Privacy</h2>
+        <p className="mt-8 max-w-[52ch] text-2xl leading-snug">
+          <Rise
+            onView
+            text="Depth readings become a number and are thrown away. No photo, no video, no upload, no account, no analytics."
+          />
+        </p>
+        <p className="mt-6 max-w-[60ch] text-fg-secondary">
+          The app works with the phone in flight mode, because there is nothing for it to
+          talk to.{" "}
+          <Link
+            href="/privacy"
+            className="underline decoration-fg-tertiary underline-offset-4 hover:decoration-amber"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            Read the policy
+          </Link>
+          .
+        </p>
+      </section>
+
+      <footer className="mx-auto mt-24 flex w-full max-w-5xl flex-wrap items-center gap-x-8 gap-y-3 border-t border-rule px-6 pt-8">
+        <span className="mono text-fg-tertiary">{APP_NAME}</span>
+        <Link href="/privacy" className="mono text-fg-tertiary hover:text-fg">
+          Privacy
+        </Link>
+        <Link href="/support" className="mono text-fg-tertiary hover:text-fg">
+          Support
+        </Link>
+      </footer>
+    </main>
   );
 }

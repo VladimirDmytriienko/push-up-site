@@ -27,6 +27,9 @@ export function StoreNote() {
         <p className="mt-2 text-sm text-fg-secondary">
           Search that name once it is live.
         </p>
+        {/* The requirement belongs beside the name someone is about to search for,
+            not buried on the support page where nobody looks before downloading. */}
+        <p className="mono mt-3 text-[10px] text-fg-tertiary">Requires an iPhone with Face ID</p>
       </div>
     </div>
   );

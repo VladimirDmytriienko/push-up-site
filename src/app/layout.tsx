@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Anton } from "next/font/google";
 import "./globals.css";
-import { SITE_URL } from "@/lib/site";
+import { APP_FULL_NAME, APP_NAME, SITE_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 /**
@@ -23,13 +23,13 @@ const DESCRIPTION =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "Push Up Streak", template: "%s · Push Up Streak" },
+  title: { default: APP_FULL_NAME, template: `%s · ${APP_NAME}` },
   description: DESCRIPTION,
-  applicationName: "Push Up Streak",
+  applicationName: APP_NAME,
   openGraph: {
     type: "website",
-    siteName: "Push Up Streak",
-    title: "Push Up Streak",
+    siteName: APP_NAME,
+    title: APP_FULL_NAME,
     description: DESCRIPTION,
   },
   robots: { index: true, follow: true },

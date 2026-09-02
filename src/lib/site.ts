@@ -13,7 +13,16 @@ export const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
 export const CONTACT_EMAIL = "push-up-streak@proton.me";
 
-export const APP_NAME = "Push Up Streak";
+export const APP_NAME = "uPush";
+
+/**
+ * The long form, as it appears in the App Store.
+ *
+ * Kept separate from `APP_NAME`: the brand is what the page says in running text, while
+ * this is what a search engine should index — the same split Apple makes between the app's
+ * name on the device and its name in the store.
+ */
+export const APP_FULL_NAME = "uPush: Push Up Counter";
 
 /**
  * The date the privacy policy last changed, shown on the page.

@@ -1,6 +1,6 @@
-# Push Up Streak — site
+# uPush — site
 
-The website for [Push Up Streak](https://github.com/VladimirDmytriienko/push-up), an iOS app
+The website for [uPush](https://github.com/VladimirDmytriienko/push-up), an iOS app
 that counts push-ups with the iPhone's TrueDepth camera while the phone lies on the floor
 beneath you.
 

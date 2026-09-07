@@ -36,6 +36,20 @@ export default function Privacy() {
         set, and it says so rather than failing quietly.
       </p>
 
+      <h2>Face data</h2>
+      <p>
+        <strong>None is collected.</strong> The TrueDepth camera is used here as a
+        rangefinder, not as a face sensor: each depth frame becomes a single number — how
+        far the nearest surface is from the phone — and is then discarded. Nothing about
+        that number is particular to you. Pointed at a wall, the app measures the wall.
+      </p>
+      <p>
+        There is no face detection, recognition, or tracking, no face map, mesh, template
+        or faceprint, and nothing that could identify anyone. Nothing derived from the
+        camera is stored on the phone or anywhere else, and nothing is shared with any
+        third party. Only the number of reps outlives a set.
+      </p>
+
       <h2>What is stored, and where</h2>
       <p>
         Your rep history — how many push-ups on which days, and how long the last set took —

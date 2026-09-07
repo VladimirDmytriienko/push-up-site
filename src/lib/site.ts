@@ -31,4 +31,4 @@ export const APP_FULL_NAME = "uPush: Push Up Counter";
  * revised every time the site was redeployed, which is exactly the sort of small
  * untruth a privacy page cannot afford.
  */
-export const POLICY_UPDATED = "1 September 2026";
+export const POLICY_UPDATED = "7 September 2026";

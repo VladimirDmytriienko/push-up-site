@@ -4,6 +4,9 @@ The website for [uPush](https://github.com/VladimirDmytriienko/push-up), an iOS 
 that counts push-ups with the iPhone's TrueDepth camera while the phone lies on the floor
 beneath you.
 
+**[Available on the App Store.](https://apps.apple.com/app/id6807855089)** Requires an
+iPhone with Face ID.
+
 Three pages. Two of them exist because the App Store will not accept a submission without
 them, and one exists because the app deserves a page.
 
@@ -38,11 +41,16 @@ there is no server to keep running and nothing to go stale. Deployed on Vercel.
 ## Notes for the curious
 
 The screenshots in `public/shots` come from a Release build on the Simulator with a seeded
-workout history — the app has not shipped, so no real history is long enough to photograph
-yet. A Release build specifically, because a development build draws a floating dev-menu
-button over the screen.
+workout history — the app had not shipped when they were taken, so no real history was long
+enough to photograph. A Release build specifically, because a development build draws a
+floating dev-menu button over the screen.
 
 The site's own URL is never hardcoded. `SITE_URL` in `src/lib/site.ts` reads Vercel's
 `VERCEL_PROJECT_PRODUCTION_URL`, so metadata, `robots.txt` and `sitemap.xml` are correct on
 the free domain today and stay correct the day a custom one is pointed at it, with nothing
 to remember to change.
+
+The site writes the App Store link once, as `APP_STORE_URL` in the same file, and every page
+that links to the store reads it from there. The badge is Apple's artwork, unmodified, and
+served from this site rather than hotlinked, so opening a page still sends no request
+anywhere else.

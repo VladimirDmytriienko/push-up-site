@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { APP_NAME } from "@/lib/site";
+import { APP_NAME, APP_STORE_URL } from "@/lib/site";
 
 type Props = {
   eyebrow: string;
@@ -33,10 +33,16 @@ export function PageShell({ eyebrow, title, children }: Props) {
 
       <div className="prose-plain mt-12 flex-1">{children}</div>
 
-      <footer className="mt-20 border-t border-rule pt-6">
+      <footer className="mt-20 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 border-t border-rule pt-6">
         <p className="mono text-fg-tertiary">
           {APP_NAME} · Counted on your iPhone, nowhere else
         </p>
+        <a
+          href={APP_STORE_URL}
+          className="mono text-fg-tertiary transition-colors hover:text-fg focus-visible:outline-2 focus-visible:outline-amber focus-visible:outline-offset-4"
+        >
+          App Store
+        </a>
       </footer>
     </div>
   );

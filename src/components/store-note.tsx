@@ -1,14 +1,13 @@
 import Image from "next/image";
 
-import { APP_NAME } from "@/lib/site";
+import { APP_NAME, APP_STORE_URL } from "@/lib/site";
 
 /**
- * Where to find it, stated plainly.
+ * Where to get it.
  *
- * Deliberately NOT Apple's "Download on the App Store" badge. That badge is Apple's own
- * artwork, to be taken from their marketing resources and used unmodified — and putting it
- * here now would claim the app is already downloadable, which it is not. This says what is
- * true today; when the app is live it becomes the real badge with a real link.
+ * The badge is Apple's own artwork from their marketing tools, unmodified, as their
+ * guidelines require. It is served from this site rather than hotlinked from Apple's, so
+ * that opening the page sends no request to anyone but this site.
  */
 export function StoreNote() {
   return (
@@ -22,13 +21,23 @@ export function StoreNote() {
         className="h-16 w-16 shrink-0 rounded-[1.1rem] sm:h-[72px] sm:w-[72px]"
       />
       <div className="min-w-0">
-        <p className="mono text-[10px] text-fg-tertiary">Coming to the App Store</p>
-        <p className="display mt-1.5 text-2xl uppercase sm:text-3xl">{APP_NAME}</p>
-        <p className="mt-2 text-sm text-fg-secondary">
-          Search that name once it is live.
-        </p>
-        {/* The requirement belongs beside the name someone is about to search for,
-            not buried on the support page where nobody looks before downloading. */}
+        <p className="display text-2xl uppercase sm:text-3xl">{APP_NAME}</p>
+        <a
+          href={APP_STORE_URL}
+          className="mt-3 inline-flex rounded-lg focus-visible:outline-2 focus-visible:outline-amber focus-visible:outline-offset-4"
+        >
+          {/* 44px tall: above Apple's 40px minimum for the badge, and a comfortable tap. */}
+          <Image
+            src="/app-store-badge.svg"
+            alt={`Download ${APP_NAME} on the App Store`}
+            width={120}
+            height={40}
+            unoptimized
+            className="h-11 w-auto"
+          />
+        </a>
+        {/* The requirement belongs beside the button someone is about to press, not buried
+            on the support page where nobody looks before downloading. */}
         <p className="mono mt-3 text-[10px] text-fg-tertiary">Requires an iPhone with Face ID</p>
       </div>
     </div>

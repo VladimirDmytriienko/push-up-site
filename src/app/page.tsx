@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Rise } from "@/components/rise";
 import { Screens } from "@/components/screens";
 import { StoreNote } from "@/components/store-note";
-import { APP_NAME } from "@/lib/site";
+import { APP_NAME, APP_STORE_URL } from "@/lib/site";
 
 /**
  * The steps, word for word from the app's own guide.
@@ -92,6 +92,9 @@ export default function Home() {
 
       <footer className="mx-auto mt-24 flex w-full max-w-5xl flex-wrap items-center gap-x-8 gap-y-3 border-t border-rule px-6 pt-8">
         <span className="mono text-fg-tertiary">{APP_NAME}</span>
+        <a href={APP_STORE_URL} className="mono text-fg-tertiary hover:text-fg">
+          App Store
+        </a>
         <Link href="/privacy" className="mono text-fg-tertiary hover:text-fg">
           Privacy
         </Link>

@@ -25,6 +25,14 @@ export const APP_NAME = "uPush";
 export const APP_FULL_NAME = "uPush: Push Up Counter";
 
 /**
+ * The app's page in the App Store. Every link to the store on the site reads this one.
+ *
+ * No storefront in the path: `/us/` would send a visitor from Kyiv or Berlin to the
+ * American store. Without it, Apple sends each visitor to their own.
+ */
+export const APP_STORE_URL = "https://apps.apple.com/app/id6807855089";
+
+/**
  * The date the privacy policy last changed, shown on the page.
  *
  * Written by hand on purpose: a build-time date would silently claim the policy was

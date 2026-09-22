@@ -45,21 +45,33 @@ export default function Privacy() {
       </p>
       <p>
         There is no face detection, recognition, or tracking, no face map, mesh, template
-        or faceprint, and nothing that could identify anyone. Nothing derived from the
-        camera is stored on the phone or anywhere else, and nothing is shared with any
-        third party. Only the number of reps outlives a set.
+        or faceprint, and nothing that could identify anyone. What the app does keep, on
+        your phone, is a record of each workout: the reps, their timing, and a simplified
+        curve of how far down you went, which is what its receipt is drawn from. It never
+        leaves the phone unless you share a receipt yourself, and none of it is shared with
+        any third party.
       </p>
 
       <h2>What is stored, and where</h2>
+      <p>Two things are kept, both in the app&rsquo;s own storage on your iPhone:</p>
+      <ul>
+        <li>
+          How many push-ups you did on which days — what the calendar, the streak and the
+          totals are made of.
+        </li>
+        <li>
+          A record of each of your last 200 workouts: its sets, the timing and depth of each
+          rep, and a simplified curve of the movement, which its receipt is drawn from. Past
+          200 the oldest drop off, and their reps stay on the calendar.
+        </li>
+      </ul>
       <p>
-        Your rep history — how many push-ups on which days, and how long the last set took —
-        is kept in a single file inside the app&rsquo;s own storage on your iPhone. Nothing
-        else is recorded.
+        Apart from your settings — the daily goal and the theme — nothing else is recorded.
       </p>
       <p>
-        That file is reachable only by the app. It leaves your phone only if you back your
-        phone up to iCloud or a computer, in which case it is covered by that backup and by
-        Apple&rsquo;s terms, not by ours.
+        These files are reachable only by the app. A receipt you share goes where you send
+        it and nowhere else. Otherwise they leave your phone only in a backup of it, to
+        iCloud or a computer, which is covered by Apple&rsquo;s terms, not by ours.
       </p>
 
       <h2>What is not collected</h2>
@@ -86,8 +98,8 @@ export default function Privacy() {
 
       <h2>Deleting your data</h2>
       <p>
-        <strong>Settings → Start over</strong> erases every rep on record and returns the app
-        to how it was on first launch. Deleting the app removes the same data along with it.
+        <strong>Settings → Start over</strong> erases every rep and every workout on record
+        and returns the app to how it was on first launch. Deleting the app removes the same data along with it.
         Both are immediate and cannot be undone.
       </p>
       <p>

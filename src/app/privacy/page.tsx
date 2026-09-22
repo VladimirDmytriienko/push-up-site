@@ -65,7 +65,9 @@ export default function Privacy() {
           200 the oldest drop off, and their reps stay on the calendar.
         </li>
       </ul>
-      <p>Nothing else is recorded.</p>
+      <p>
+        Apart from your settings — the daily goal and the theme — nothing else is recorded.
+      </p>
       <p>
         These files are reachable only by the app. A receipt you share goes where you send
         it and nowhere else. Otherwise they leave your phone only in a backup of it, to

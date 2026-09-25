@@ -54,3 +54,23 @@ The site writes the App Store link once, as `APP_STORE_URL` in the same file, an
 that links to the store reads it from there. The badge is Apple's artwork, unmodified, and
 served from this site rather than hotlinked, so opening a page still sends no request
 anywhere else.
+
+## The presentation video
+
+The landing page has a video section that only appears when `public/video/upush.mp4`
+exists at build time, so the site builds and ships the same without it. To add it, drop the
+file in (plus an optional `public/video/upush-poster.jpg` still) and redeploy.
+
+Compress it first: it is served from this site, and every visitor who scrolls to it loads
+it. H.264 with `faststart` so it begins playing before it has fully downloaded:
+
+```bash
+ffmpeg -i pushup_app_presentation_with_outro.mp4 \
+  -c:v libx264 -crf 26 -preset slow -vf "scale='min(1920,iw)':-2" \
+  -c:a aac -b:a 128k -movflags +faststart public/video/upush.mp4
+ffmpeg -ss 2 -i public/video/upush.mp4 -frames:v 1 -q:v 3 public/video/upush-poster.jpg
+```
+
+It plays muted and looping while on screen and pauses when scrolled away; "Watch with
+sound" restarts it with the browser's own controls. Under reduced motion it never
+autoplays.

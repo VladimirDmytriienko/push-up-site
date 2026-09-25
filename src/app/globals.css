@@ -76,6 +76,8 @@
   --color-rule: var(--rule);
   --color-amber: var(--amber);
   --color-gold: var(--gold);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
 
   /*
    * Apple faces first, on purpose.
@@ -151,6 +153,29 @@ body {
   font-family: var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+/*
+ * The front camera looking for a chin (see StepsStory): a ring leaves the lens and fades.
+ */
+@keyframes aim {
+  0% { opacity: 0.9; transform: scale(0.2); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+/*
+ * Light breathing above the hero. Slow enough to read as ambience, never as a signal.
+ */
+@keyframes breathe {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 /*

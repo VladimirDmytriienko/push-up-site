@@ -40,3 +40,12 @@ export const APP_STORE_URL = "https://apps.apple.com/app/id6807855089";
  * untruth a privacy page cannot afford.
  */
 export const POLICY_UPDATED = "22 September 2026";
+
+/**
+ * The presentation video and the still shown before it plays, both under `public/`.
+ *
+ * The landing page shows the video section only when the file is actually there at build
+ * time, so the site ships the same with or without it — drop the file in and redeploy.
+ */
+export const VIDEO_SRC = "/video/upush.mp4";
+export const VIDEO_POSTER = "/video/upush-poster.jpg";

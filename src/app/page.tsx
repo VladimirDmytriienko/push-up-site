@@ -1,13 +1,13 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
+import Image from "next/image";
 import Link from "next/link";
 
 import { DownloadBar, STORE_ANCHOR_ID } from "@/components/download-bar";
+import { HeroPhones } from "@/components/hero-phones";
 import { Reveal } from "@/components/reveal";
 import { Rise } from "@/components/rise";
-import { Screens } from "@/components/screens";
 import { StepsStory } from "@/components/steps-story";
-import { StoreNote } from "@/components/store-note";
 import { VideoShowcase } from "@/components/video-showcase";
 import { APP_NAME, APP_STORE_URL, VIDEO_POSTER, VIDEO_SRC } from "@/lib/site";
 
@@ -27,37 +27,55 @@ export default function Home() {
       />
 
       {/*
-        One screen at a time, beside the headline.
-
-        The order differs by width on purpose. On a phone the headline lands first, then the
-        screen, then the prose — you scroll, so the claim should arrive before its evidence.
-        On a wide display both are in view at once, and the screen reads better on the left
-        where the eye starts.
+        One column, centred, on every screen: what it is, the claim, one line of how, and the
+        button — then the evidence underneath. The same order at every width, so a phone
+        reads it top to bottom and the download sits on the first screen, before the fan of
+        screens has to fit.
       */}
-      <section className="relative mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 pt-16 sm:pt-24 md:grid md:grid-cols-[minmax(0,320px)_1fr] md:gap-x-16 md:gap-y-8 md:pt-16">
-        <div className="md:col-start-2 md:row-start-1 md:self-end">
-          <Reveal onLoad>
-            <p className="mono text-fg-tertiary">{APP_NAME}</p>
-          </Reveal>
-          <h1 className="display mt-6 text-[clamp(2.75rem,7vw,5rem)] uppercase">
-            <Rise text="Put the phone down and push" delay={0.15} />
-          </h1>
-        </div>
-
-        <Reveal onLoad delay={0.3} className="md:col-start-1 md:row-span-2 md:row-start-1 md:self-center">
-          <Screens />
+      <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-6 pt-12 text-center sm:pt-16">
+        <Reveal onLoad>
+          <p className="mono text-[11px] text-fg-tertiary sm:text-xs">
+            {APP_NAME} <span className="text-amber">·</span> Push-up counter for iPhone
+          </p>
         </Reveal>
 
-        <Reveal onLoad delay={0.55} className="md:col-start-2 md:row-start-2 md:self-start">
-          <p className="max-w-[46ch] text-lg leading-relaxed text-fg-secondary sm:text-xl">
-            The TrueDepth camera watches your chest and counts every rep. No wearable, no
-            tapping the screen between sets, no account. Everything happens on the iPhone
-            and nothing leaves it.
+        <h1 className="display mt-5 text-balance text-[clamp(3.25rem,12vw,6.5rem)] uppercase leading-[0.9] sm:mt-6">
+          <Rise text="Put the phone down and push" delay={0.1} />
+        </h1>
+
+        <Reveal onLoad delay={0.45}>
+          <p className="mx-auto mt-5 max-w-[34ch] text-lg leading-snug text-fg-secondary sm:mt-7 sm:text-xl">
+            The TrueDepth camera counts every rep. No wearable, no tapping, no account —
+            nothing leaves the phone.
           </p>
-          <div id={STORE_ANCHOR_ID} className="mt-8 max-w-[26rem]">
-            <StoreNote />
+        </Reveal>
+
+        <Reveal onLoad delay={0.6}>
+          <div id={STORE_ANCHOR_ID} className="mt-7 flex flex-col items-center gap-3 sm:mt-9">
+            <a
+              href={APP_STORE_URL}
+              className="rounded-[0.7rem] transition hover:scale-[1.04] focus-visible:outline-2 focus-visible:outline-amber focus-visible:outline-offset-4 active:scale-[0.98]"
+            >
+              {/* Apple's badge, unmodified. 52px tall: well above Apple's 40px minimum. */}
+              <Image
+                src="/app-store-badge.svg"
+                alt={`Download ${APP_NAME} on the App Store`}
+                width={120}
+                height={40}
+                unoptimized
+                priority
+                className="h-[52px] w-auto"
+              />
+            </a>
+            {/* The requirement belongs beside the button someone is about to press. */}
+            <p className="mono text-[10px] text-fg-tertiary">Requires an iPhone with Face ID</p>
           </div>
         </Reveal>
+
+        {/* Out past the section's side padding, so the fan runs to the screen's edges. */}
+        <div className="-mx-6 w-[calc(100%+3rem)] sm:mt-2">
+          <HeroPhones />
+        </div>
       </section>
 
       {hasVideo ? (

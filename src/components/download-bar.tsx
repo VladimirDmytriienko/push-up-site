@@ -5,19 +5,19 @@ import Image from "next/image";
 
 import { APP_NAME, APP_STORE_URL } from "@/lib/site";
 
-/** The element the bar gives way to: while it is on screen, it is the download button. */
+/** The hero's download button: while it is on screen, the bar steps aside for it. */
 export const STORE_ANCHOR_ID = "get";
 
 /**
  * A download button that is always in reach.
  *
- * On a phone the hero's store card sits below the screenshot, off the first screen, and
- * from there on nothing on the page links to the store until the footer. This bar fills
- * both gaps: pinned to the bottom edge on every size of screen, stepping aside only while
- * the hero card is itself in view, so there is always exactly one way to download showing.
+ * Once the hero's button scrolls away, nothing on the page links to the store until the
+ * footer. This bar fills that gap: pinned to the bottom edge on every size of screen, and
+ * stepping aside only while the hero's button is itself in view, so there is always exactly
+ * one way to download showing.
  *
- * It renders visible. JavaScript only ever hides it, and only while the card is showing —
- * so a page without scripts still has a download button on every screen.
+ * It renders visible. JavaScript only ever hides it, and only while the hero's button is
+ * showing — so a page without scripts still has a download button on every screen.
  */
 export function DownloadBar() {
   const [hidden, setHidden] = useState(false);

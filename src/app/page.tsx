@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import Link from "next/link";
 
+import { DownloadBar, STORE_ANCHOR_ID } from "@/components/download-bar";
 import { Reveal } from "@/components/reveal";
 import { Rise } from "@/components/rise";
 import { Screens } from "@/components/screens";
@@ -18,7 +19,7 @@ export default function Home() {
   const hasPoster = inPublic(VIDEO_POSTER);
 
   return (
-    <main className="relative flex-1 overflow-x-clip pb-24">
+    <main className="relative flex-1 overflow-x-clip pb-36">
       {/* Amber light falling on the hero, the one warm thing on the ink. */}
       <div
         aria-hidden
@@ -33,8 +34,8 @@ export default function Home() {
         On a wide display both are in view at once, and the screen reads better on the left
         where the eye starts.
       */}
-      <section className="relative mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 pt-16 sm:pt-24 md:grid md:grid-cols-[minmax(0,320px)_1fr] md:items-center md:gap-16">
-        <div className="md:col-start-2 md:row-start-1">
+      <section className="relative mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 pt-16 sm:pt-24 md:grid md:grid-cols-[minmax(0,320px)_1fr] md:gap-x-16 md:gap-y-8 md:pt-16">
+        <div className="md:col-start-2 md:row-start-1 md:self-end">
           <Reveal onLoad>
             <p className="mono text-fg-tertiary">{APP_NAME}</p>
           </Reveal>
@@ -43,17 +44,17 @@ export default function Home() {
           </h1>
         </div>
 
-        <Reveal onLoad delay={0.3} className="md:col-start-1 md:row-span-2 md:row-start-1">
+        <Reveal onLoad delay={0.3} className="md:col-start-1 md:row-span-2 md:row-start-1 md:self-center">
           <Screens />
         </Reveal>
 
-        <Reveal onLoad delay={0.55} className="md:col-start-2 md:row-start-2">
-          <p className="max-w-[46ch] text-xl leading-relaxed text-fg-secondary">
+        <Reveal onLoad delay={0.55} className="md:col-start-2 md:row-start-2 md:self-start">
+          <p className="max-w-[46ch] text-lg leading-relaxed text-fg-secondary sm:text-xl">
             The TrueDepth camera watches your chest and counts every rep. No wearable, no
             tapping the screen between sets, no account. Everything happens on the iPhone
             and nothing leaves it.
           </p>
-          <div className="mt-9 max-w-[26rem]">
+          <div id={STORE_ANCHOR_ID} className="mt-8 max-w-[26rem]">
             <StoreNote />
           </div>
         </Reveal>
@@ -100,6 +101,8 @@ export default function Home() {
           Support
         </Link>
       </footer>
+
+      <DownloadBar />
     </main>
   );
 }

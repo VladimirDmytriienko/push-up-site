@@ -92,7 +92,8 @@ function Stage() {
     <div ref={ref} className="relative mt-24 border-t border-rule" style={{ height: "340svh" }}>
       <section
         aria-labelledby="how-heading"
-        className="sticky top-0 flex h-svh items-center overflow-hidden"
+        // The bottom padding keeps the story clear of the download bar pinned beneath it.
+        className="sticky top-0 flex h-svh items-center overflow-hidden pt-4 pb-24"
       >
         {/* Light from the floor, where the phone is. */}
         <div
@@ -100,10 +101,10 @@ function Stage() {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-[radial-gradient(50%_60%_at_30%_100%,rgba(255,159,10,0.12),transparent_72%)]"
         />
 
-        <div className="relative mx-auto grid w-full max-w-5xl items-center gap-8 px-6 md:grid-cols-[minmax(0,320px)_1fr] md:gap-16">
+        <div className="relative mx-auto grid w-full max-w-5xl items-center gap-6 px-6 md:grid-cols-[minmax(0,320px)_1fr] md:gap-16 [@media(max-height:500px)]:gap-4">
           <div className="flex justify-center [perspective:1400px]">
             <motion.div
-              className="relative w-[min(50vw,21svh)] md:w-[min(100%,34svh,300px)]"
+              className="relative w-[min(46vw,19svh)] md:w-[min(100%,30svh,300px)]"
               style={{ aspectRatio: `${SHOT_W} / ${SHOT_H}`, rotateX, scale, transformOrigin: "50% 90%" }}
             >
               <div className="absolute inset-0 overflow-hidden rounded-[2rem] border border-rule bg-cream shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)]">
@@ -132,7 +133,7 @@ function Stage() {
               How it works
             </h2>
 
-            <ol className="relative mt-6 min-h-[9.5rem] list-none p-0 md:mt-10 md:min-h-[14rem]">
+            <ol className="relative mt-4 min-h-[8.5rem] list-none p-0 md:mt-10 md:min-h-[14rem] [@media(max-height:500px)]:mt-3 [@media(max-height:500px)]:min-h-[7rem]">
               {STEPS.map(([title, detail], i) => (
                 <motion.li
                   key={title}
@@ -148,16 +149,16 @@ function Stage() {
                   <span className="mono tabular-nums text-amber">
                     {String(i + 1).padStart(2, "0")} / {String(STEPS.length).padStart(2, "0")}
                   </span>
-                  <span className="display mt-4 block text-[clamp(2.5rem,6vw,4.5rem)] uppercase">
+                  <span className="display mt-3 block text-[clamp(2.25rem,min(6vw,8svh),4.5rem)] uppercase md:mt-4">
                     {title}
                   </span>
-                  <span className="mt-3 block text-xl text-fg-secondary">{detail}</span>
+                  <span className="mt-2 block text-lg text-fg-secondary md:mt-3 md:text-xl">{detail}</span>
                 </motion.li>
               ))}
             </ol>
 
             {/* Position through the story: one bar per step, each filling as you scroll it. */}
-            <div className="mt-8 flex max-w-xs gap-2" aria-hidden>
+            <div className="mt-5 flex max-w-xs gap-2 md:mt-8" aria-hidden>
               {STEPS.map(([title], i) => (
                 <Segment key={title} progress={p} index={i} />
               ))}
@@ -233,13 +234,13 @@ function Counter({ progress }: { progress: MotionValue<number> }) {
   });
 
   return (
-    <div className="absolute inset-0 bg-cream text-ink">
+    <div className="@container absolute inset-0 bg-cream text-ink">
       <Island />
       <p className="mono absolute inset-x-0 top-[8.3%] text-center text-[9px] text-ink/50">Set 1</p>
       <motion.p className="mono absolute inset-x-0 top-[10.9%] text-center text-[11px] tabular-nums text-ink/30">
         {clock}
       </motion.p>
-      <motion.p className="display absolute inset-x-0 top-[31%] text-center text-[clamp(4rem,11svh,7rem)] tabular-nums">
+      <motion.p className="display absolute inset-x-0 top-[31%] text-center text-[38cqw] tabular-nums">
         {count}
       </motion.p>
       <span className="absolute inset-x-[7%] bottom-[6.8%] flex h-[8.2%] items-center justify-center gap-[3px] rounded-full bg-white">

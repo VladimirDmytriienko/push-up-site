@@ -64,8 +64,12 @@ export function Screens() {
         The frame is sized from the screenshot's own aspect, so nothing is ever cropped —
         a phone capture forced into a squarer card loses the top and bottom of the screen,
         which on this app is the streak and the button.
+
+        Beside the headline it is also sized from the viewport height (0.4613 is the
+        screenshot's width over its height), so the store card next to it still lands on
+        the first screen of a laptop.
       */}
-      <div className="relative w-[min(74vw,300px)]" style={{ aspectRatio: `${SHOT_W} / ${SHOT_H}` }}>
+      <div className="relative w-[min(74vw,300px)] md:w-[clamp(180px,calc((100svh-15rem)*0.4613),300px)]" style={{ aspectRatio: `${SHOT_W} / ${SHOT_H}` }}>
         <AnimatePresence mode="popLayout" initial={false}>
           <motion.div key={screen.src} className="absolute inset-0" {...slide}>
             <Image

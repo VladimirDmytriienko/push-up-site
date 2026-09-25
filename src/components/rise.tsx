@@ -27,29 +27,34 @@ export function Rise({ text, className, onView = false, delay = 0 }: Props) {
 
   if (reduceMotion) return <span className={className}>{text}</span>;
 
-  const animation = {
-    initial: { y: "110%" },
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
-  };
+  const ease = [0.22, 1, 0.36, 1] as const;
 
   return (
-    <span className={className}>
+    // The line, not each word, is what watches the viewport. A word starts pushed below its
+    // own clipping window, so the browser never counts it as on screen — watched
+    // individually, a word waiting to scroll into view would wait forever.
+    <motion.span
+      className={className}
+      initial="hidden"
+      {...(onView
+        ? { whileInView: "shown", viewport: { once: true, amount: 0.4 } }
+        : { animate: "shown" })}
+    >
       {words.map((word, i) => (
         // Each word gets its own clipping window, so a word never slides past its neighbour.
         <span key={`${word}-${i}`} className="inline-flex overflow-hidden pb-[0.08em] align-bottom">
           <motion.span
             className="inline-block"
-            initial={animation.initial}
-            {...(onView
-              ? { whileInView: { y: 0 }, viewport: { once: true, amount: 0.4 } }
-              : { animate: { y: 0 } })}
-            transition={{ ...animation.transition, delay: delay + i * 0.07 }}
+            variants={{
+              hidden: { y: "110%" },
+              shown: { y: 0, transition: { duration: 0.7, ease, delay: delay + i * 0.07 } },
+            }}
           >
             {word}
           </motion.span>
           {i < words.length - 1 ? <span className="whitespace-pre">&nbsp;</span> : null}
         </span>
       ))}
-    </span>
+    </motion.span>
   );
 }

@@ -5,7 +5,7 @@ import { APP_NAME, CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Support",
-  description: `Help with ${APP_NAME}: why counting stops, which iPhones can run it, and how to clear your history.`,
+  description: `Help with ${APP_NAME}: why counting stops, which iPhones and iPads can run it, how the alarm works, and how to clear your history.`,
 };
 
 export default function Support() {
@@ -20,17 +20,17 @@ export default function Support() {
         usually enough to sort it out.
       </p>
       <p>
-        The three things people run into are below. They cover almost everything.
+        The things people run into are below. They cover almost everything.
       </p>
 
       <h2>Common questions</h2>
 
-      <h3>There is no Ready button on my iPhone</h3>
+      <h3>There is no Ready button on my iPhone or iPad</h3>
       <p>
         Counting needs the TrueDepth camera — the one behind Face ID. iPhones that unlock
-        with a fingerprint instead, such as the iPhone SE, do not have it, and no software
-        can add it. On those phones the app says so on the home screen rather than letting
-        you start a set that could never work.
+        with a fingerprint instead, such as the iPhone SE, do not have it, and among iPads only
+        the iPad Pro does. No software can add it. Without it the app says so on the home
+        screen rather than letting you start a set that could never work.
       </p>
 
       <h3>It is not counting my reps</h3>
@@ -51,24 +51,35 @@ export default function Support() {
         </li>
       </ul>
 
+      <h3>The alarm rings again after I press Stop</h3>
+      <p>
+        On purpose. iOS shows Stop on every alarm and no app can hide it, so in {APP_NAME} Stop
+        quiets the alarm for 30 seconds. It keeps coming back for up to half an hour, until a
+        set counts two reps. Opening the app quiets it as well. To turn the alarm off, use{" "}
+        <strong>Settings → Alarm</strong> or the alarm on the home screen. The alarm needs
+        iOS 26 or later.
+      </p>
+
       <h3>How do I clear my history?</h3>
       <p>
-        <strong>Settings → Start over.</strong> It erases every rep on record and puts the app
-        back to how it was the first time you opened it. It cannot be undone, and it asks
-        before doing it.
+        <strong>Settings → Start over.</strong> It erases every rep and workout on record,
+        resets the daily goal, turns reminders and the alarm off, and opens the app on its
+        first-launch guide again. Your training plan and theme stay as they are. It cannot be
+        undone, and it asks before doing it.
       </p>
 
       <h2>Requirements</h2>
       <ul>
-        <li>An iPhone with Face ID.</li>
+        <li>An iPhone or iPad with Face ID.</li>
         <li>Camera permission. Nothing is recorded or uploaded — see the <a href="/privacy">privacy page</a>.</li>
         <li>Somewhere to put the phone flat on the floor beneath you.</li>
+        <li>iOS 26 or later for the push-up alarm. Everything else works without it.</li>
       </ul>
 
       <h2>Reporting something broken</h2>
       <p>
-        The more specific, the faster it is fixed. Useful things to include: which iPhone,
-        which iOS version, what you were doing, and what happened instead of what you
+        The more specific, the faster it is fixed. Useful things to include: which iPhone or
+        iPad, which iOS version, what you were doing, and what happened instead of what you
         expected. A screenshot helps more than a description of one.
       </p>
     </PageShell>

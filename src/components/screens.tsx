@@ -14,7 +14,7 @@ const SCREENS = [
     category: "Home",
     title: "The board fills itself",
     src: "/shots/home.png",
-    alt: "The home screen: a sixteen day streak and a calendar of green dots",
+    alt: "The home screen: today's push-ups filling the headline, the week, a calendar of green dots, the alarm and the training plan",
   },
   {
     category: "A set",

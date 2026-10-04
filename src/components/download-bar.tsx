@@ -63,7 +63,7 @@ export function DownloadBar() {
         />
         <div className="min-w-0 flex-1">
           <p className="display truncate text-xl uppercase leading-none">{APP_NAME}</p>
-          <p className="mono mt-1 truncate text-[9px] text-fg-tertiary">iPhone with Face ID</p>
+          <p className="mono mt-1 truncate text-[9px] text-fg-tertiary">Needs Face ID</p>
         </div>
         <a
           href={APP_STORE_URL}

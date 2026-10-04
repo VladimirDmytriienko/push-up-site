@@ -68,7 +68,7 @@ export default function Home() {
               />
             </a>
             {/* The requirement belongs beside the button someone is about to press. */}
-            <p className="mono text-[10px] text-fg-tertiary">Requires an iPhone with Face ID</p>
+            <p className="mono text-[10px] text-fg-tertiary">Requires an iPhone or iPad with Face ID</p>
           </div>
         </Reveal>
 

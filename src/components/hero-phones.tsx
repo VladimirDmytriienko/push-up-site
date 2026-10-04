@@ -44,7 +44,7 @@ export function HeroPhones() {
         <Side
           side={-1}
           src="/shots/home.png"
-          alt="The home screen: a sixteen day streak and a calendar of green dots"
+          alt="The home screen: today's push-ups filling the headline, the week, a calendar of green dots, the alarm and the training plan"
           spread={spread}
           still={!!reduceMotion}
         />

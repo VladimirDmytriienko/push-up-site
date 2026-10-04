@@ -39,7 +39,7 @@ export const APP_STORE_URL = "https://apps.apple.com/app/id6807855089";
  * revised every time the site was redeployed, which is exactly the sort of small
  * untruth a privacy page cannot afford.
  */
-export const POLICY_UPDATED = "22 September 2026";
+export const POLICY_UPDATED = "4 October 2026";
 
 /**
  * The presentation video and the still shown before it plays, both under `public/`.

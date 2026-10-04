@@ -5,7 +5,7 @@ import { APP_NAME, CONTACT_EMAIL, POLICY_UPDATED } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy",
-  description: `${APP_NAME} collects nothing. Everything the camera sees is processed on your iPhone and never leaves it.`,
+  description: `${APP_NAME} collects nothing. Everything the camera sees is processed on your iPhone or iPad and never leaves it.`,
 };
 
 export default function Privacy() {
@@ -32,8 +32,13 @@ export default function Privacy() {
         the app leaves the screen.
       </p>
       <p>
-        Camera access is the only permission requested. Without it the app will not start a
-        set, and it says so rather than failing quietly.
+        Camera access is the only permission the app needs. Without it the app will not start
+        a set, and it says so rather than failing quietly.
+      </p>
+      <p>
+        Two more are asked for only if you turn on what uses them: notifications, for
+        reminders on your training days, and alarms, for the push-up alarm on iOS 26 and
+        later. Both are scheduled with iOS on the device itself and pass through no server.
       </p>
 
       <h2>Face data</h2>
@@ -53,23 +58,32 @@ export default function Privacy() {
       </p>
 
       <h2>What is stored, and where</h2>
-      <p>Two things are kept, both in the app&rsquo;s own storage on your iPhone:</p>
+      <p>Two records are kept, both in the app&rsquo;s own storage on your iPhone or iPad:</p>
       <ul>
         <li>
           How many push-ups you did on which days — what the calendar, the streak and the
           totals are made of.
         </li>
         <li>
-          A record of each of your last 200 workouts: its sets, the timing and depth of each
-          rep, and a simplified curve of the movement, which its receipt is drawn from. Past
-          200 the oldest drop off, and their reps stay on the calendar.
+          A record of each of your last 200 workouts: its sets and the rests between them,
+          the timing and depth of each rep, and a simplified curve of the movement, which its
+          receipt is drawn from. A set you correct or add by hand is marked as such, and a
+          corrected one keeps the camera&rsquo;s own count beside yours. Past 200 the oldest
+          drop off, and their reps stay on the calendar.
         </li>
       </ul>
       <p>
-        Apart from your settings — the daily goal and the theme — nothing else is recorded.
+        Apart from those, the app keeps only your settings: the daily goal, the theme, your
+        training plan — the days you train on, breaks and skipped days — and the times and
+        days you set for reminders and the alarm.
       </p>
       <p>
-        These files are reachable only by the app. A receipt you share goes where you send
+        The Home Screen widget is given a summary to draw: today&rsquo;s count and goal, the
+        streak, and how much you did on each recent day. It sits in storage the app shares
+        with its own widget and nothing else.
+      </p>
+      <p>
+        These files are reachable only by the app and its widget. A receipt you share goes where you send
         it and nowhere else. Otherwise they leave your phone only in a backup of it, to
         iCloud or a computer, which is covered by Apple&rsquo;s terms, not by ours.
       </p>
@@ -98,9 +112,10 @@ export default function Privacy() {
 
       <h2>Deleting your data</h2>
       <p>
-        <strong>Settings → Start over</strong> erases every rep and every workout on record
-        and returns the app to how it was on first launch. Deleting the app removes the same data along with it.
-        Both are immediate and cannot be undone.
+        <strong>Settings → Start over</strong> erases every rep and every workout on record,
+        resets the daily goal, turns reminders and the alarm off, and opens the app on its
+        first-launch guide again; the training plan and the theme stay as you set them.
+        Deleting the app removes all of its data. Both are immediate and cannot be undone.
       </p>
       <p>
         There is nothing for us to delete on your behalf, because we never receive anything.
